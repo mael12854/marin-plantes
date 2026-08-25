@@ -1,5 +1,6 @@
-import { useEffect, useState, type FormEvent } from 'react';
+import { useEffect, useRef, useState, type ChangeEvent, type FormEvent } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { CameraPanel } from '../../components/CameraPanel';
 import { Button } from '../../components/ui/Button';
 import { SelectField, TextField } from '../../components/ui/Field';
 import { supabase } from '../../lib/supabase';
@@ -16,6 +17,9 @@ export function AdminPlant() {
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [deleting, setDeleting] = useState(false);
+  const [uploadingPhoto, setUploadingPhoto] = useState(false);
+  const [photoError, setPhotoError] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   async function load() {
     if (!id) return;
@@ -49,6 +53,32 @@ export function AdminPlant() {
     });
     setSubmitting(false);
     (e.target as HTMLFormElement).reset();
+    load();
+  }
+
+  async function handlePhotoChange(e: ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file || !id) return;
+    setUploadingPhoto(true);
+    setPhotoError(null);
+    const path = `${id}/${Date.now()}-${file.name}`;
+    const { error: uploadError } = await supabase.storage.from('camera-frames').upload(path, file, { upsert: false });
+    if (uploadError) {
+      setUploadingPhoto(false);
+      setPhotoError("L'envoi de la photo n'a pas marché, réessaie.");
+      return;
+    }
+    const { data: urlData } = supabase.storage.from('camera-frames').getPublicUrl(path);
+    const { error: updateError } = await supabase
+      .from('plants')
+      .update({ camera_frame_url: urlData.publicUrl, camera_frame_taken_at: new Date().toISOString() })
+      .eq('id', id);
+    setUploadingPhoto(false);
+    if (updateError) {
+      setPhotoError("La photo est envoyée mais la plante n'a pas pu être mise à jour, réessaie.");
+      return;
+    }
+    if (fileInputRef.current) fileInputRef.current.value = '';
     load();
   }
 
@@ -89,6 +119,25 @@ export function AdminPlant() {
         </Button>
       </div>
       <h1 style={{ fontFamily: font.display, fontWeight: 300, fontSize: 40, lineHeight: 1.05, margin: '0 0 32px' }}>{plant.species}</h1>
+
+      <div style={{ marginBottom: 40 }}>
+        <CameraPanel plot={plant.plot} imageUrl={plant.camera_frame_url} takenAt={plant.camera_frame_taken_at} />
+        <div style={{ marginTop: 12 }}>
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept="image/*"
+            capture="environment"
+            id="camera_photo"
+            onChange={handlePhotoChange}
+            style={{ display: 'none' }}
+          />
+          <Button variant="outline" disabled={uploadingPhoto} onClick={() => fileInputRef.current?.click()} style={{ opacity: uploadingPhoto ? 0.6 : 1 }}>
+            {uploadingPhoto ? 'Envoi…' : 'Prendre / envoyer une photo'}
+          </Button>
+          {photoError && <p style={{ color: color.argile, fontSize: 13, marginTop: 8 }}>{photoError}</p>}
+        </div>
+      </div>
 
       <form
         onSubmit={handleAddEntry}
