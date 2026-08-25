@@ -6,11 +6,13 @@ import { TextAreaField, TextField } from '../components/ui/Field';
 import { useAuth } from '../lib/AuthContext';
 import { supabase } from '../lib/supabase';
 import type { JournalEntry, Plant } from '../lib/types';
+import { useCameraState } from '../lib/useCameraState';
 import { color, font, text } from '../tokens';
 
 export function PlantDetail() {
   const { id } = useParams<{ id: string }>();
   const { user } = useAuth();
+  const { camera } = useCameraState();
   const [plant, setPlant] = useState<Plant | null>(null);
   const [entries, setEntries] = useState<JournalEntry[]>([]);
   const [loading, setLoading] = useState(true);
@@ -125,7 +127,7 @@ export function PlantDetail() {
           </div>
         </div>
 
-        <CameraPanel plot={plant.plot} imageUrl={plant.camera_frame_url} takenAt={plant.camera_frame_taken_at} />
+        <CameraPanel imageUrl={camera?.frame_url} takenAt={camera?.taken_at} />
       </div>
 
       {!visitSent ? (

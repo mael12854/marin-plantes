@@ -6,9 +6,10 @@ import { Button } from './ui/Button';
 const CAPTURE_INTERVAL_MS = 20000;
 
 interface LiveBroadcastProps {
-  plantId: string;
   onFrameUploaded: () => void;
 }
+
+const CAMERA_PATH = 'garden/latest.jpg';
 
 function captureFrame(video: HTMLVideoElement): Promise<Blob | null> {
   const canvas = document.createElement('canvas');
@@ -20,7 +21,7 @@ function captureFrame(video: HTMLVideoElement): Promise<Blob | null> {
   return new Promise((resolve) => canvas.toBlob((b) => resolve(b), 'image/jpeg', 0.8));
 }
 
-export function LiveBroadcast({ plantId, onFrameUploaded }: LiveBroadcastProps) {
+export function LiveBroadcast({ onFrameUploaded }: LiveBroadcastProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const streamRef = useRef<MediaStream | null>(null);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -33,17 +34,13 @@ export function LiveBroadcast({ plantId, onFrameUploaded }: LiveBroadcastProps) 
     if (!video || video.videoWidth === 0) return;
     const blob = await captureFrame(video);
     if (!blob) return;
-    const path = `${plantId}/latest.jpg`;
-    const { error: uploadError } = await supabase.storage.from('camera-frames').upload(path, blob, {
+    const { error: uploadError } = await supabase.storage.from('camera-frames').upload(CAMERA_PATH, blob, {
       upsert: true,
       contentType: 'image/jpeg',
     });
     if (uploadError) return;
-    const { data } = supabase.storage.from('camera-frames').getPublicUrl(path);
-    await supabase
-      .from('plants')
-      .update({ camera_frame_url: data.publicUrl, camera_frame_taken_at: new Date().toISOString() })
-      .eq('id', plantId);
+    const { data } = supabase.storage.from('camera-frames').getPublicUrl(CAMERA_PATH);
+    await supabase.from('camera_state').update({ frame_url: data.publicUrl, taken_at: new Date().toISOString() }).eq('id', true);
     setLastSent(new Date());
     onFrameUploaded();
   }

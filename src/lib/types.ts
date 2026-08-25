@@ -33,9 +33,13 @@ export interface Plant {
   owner_id: string | null;
   request_id: string | null;
   status: PlantStatus;
-  camera_frame_url: string | null;
-  camera_frame_taken_at: string | null;
   created_at: string;
+}
+
+export interface CameraState {
+  id: true;
+  frame_url: string | null;
+  taken_at: string | null;
 }
 
 export interface JournalEntry {

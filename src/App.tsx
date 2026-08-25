@@ -8,6 +8,7 @@ import { ClientDashboard } from './pages/ClientDashboard';
 import { Landing } from './pages/Landing';
 import { Order } from './pages/Order';
 import { PlantDetail } from './pages/PlantDetail';
+import { AdminCamera } from './pages/admin/AdminCamera';
 import { AdminDashboard } from './pages/admin/AdminDashboard';
 import { AdminPlant } from './pages/admin/AdminPlant';
 
@@ -56,6 +57,16 @@ function App() {
               <Layout>
                 <ProtectedRoute role="marin">
                   <AdminPlant />
+                </ProtectedRoute>
+              </Layout>
+            }
+          />
+          <Route
+            path="/admin/camera"
+            element={
+              <Layout>
+                <ProtectedRoute role="marin">
+                  <AdminCamera />
                 </ProtectedRoute>
               </Layout>
             }

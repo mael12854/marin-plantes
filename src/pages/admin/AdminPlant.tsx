@@ -1,11 +1,11 @@
-import { useEffect, useRef, useState, type ChangeEvent, type FormEvent } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useEffect, useState, type FormEvent } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { CameraPanel } from '../../components/CameraPanel';
-import { LiveBroadcast } from '../../components/LiveBroadcast';
 import { Button } from '../../components/ui/Button';
 import { SelectField, TextField } from '../../components/ui/Field';
 import { supabase } from '../../lib/supabase';
 import type { JournalEntry, Plant } from '../../lib/types';
+import { useCameraState } from '../../lib/useCameraState';
 import { color, font, text } from '../../tokens';
 
 const actionTypes = ['Arrosage', 'Taille', 'Mesure', 'Terre retournée', 'Autre'];
@@ -13,14 +13,12 @@ const actionTypes = ['Arrosage', 'Taille', 'Mesure', 'Terre retournée', 'Autre'
 export function AdminPlant() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const { camera } = useCameraState();
   const [plant, setPlant] = useState<Plant | null>(null);
   const [entries, setEntries] = useState<JournalEntry[]>([]);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [deleting, setDeleting] = useState(false);
-  const [uploadingPhoto, setUploadingPhoto] = useState(false);
-  const [photoError, setPhotoError] = useState<string | null>(null);
-  const fileInputRef = useRef<HTMLInputElement>(null);
 
   async function load() {
     if (!id) return;
@@ -56,32 +54,6 @@ export function AdminPlant() {
     });
     setSubmitting(false);
     (e.target as HTMLFormElement).reset();
-    load();
-  }
-
-  async function handlePhotoChange(e: ChangeEvent<HTMLInputElement>) {
-    const file = e.target.files?.[0];
-    if (!file || !id) return;
-    setUploadingPhoto(true);
-    setPhotoError(null);
-    const path = `${id}/${Date.now()}-${file.name}`;
-    const { error: uploadError } = await supabase.storage.from('camera-frames').upload(path, file, { upsert: false });
-    if (uploadError) {
-      setUploadingPhoto(false);
-      setPhotoError("L'envoi de la photo n'a pas marché, réessaie.");
-      return;
-    }
-    const { data: urlData } = supabase.storage.from('camera-frames').getPublicUrl(path);
-    const { error: updateError } = await supabase
-      .from('plants')
-      .update({ camera_frame_url: urlData.publicUrl, camera_frame_taken_at: new Date().toISOString() })
-      .eq('id', id);
-    setUploadingPhoto(false);
-    if (updateError) {
-      setPhotoError("La photo est envoyée mais la plante n'a pas pu être mise à jour, réessaie.");
-      return;
-    }
-    if (fileInputRef.current) fileInputRef.current.value = '';
     load();
   }
 
@@ -123,26 +95,13 @@ export function AdminPlant() {
       </div>
       <h1 style={{ fontFamily: font.display, fontWeight: 300, fontSize: 40, lineHeight: 1.05, margin: '0 0 32px' }}>{plant.species}</h1>
 
-      <div className="mp-grid-stack" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginBottom: 40, alignItems: 'start' }}>
-        <div>
-          <CameraPanel plot={plant.plot} imageUrl={plant.camera_frame_url} takenAt={plant.camera_frame_taken_at} />
-          <div style={{ marginTop: 12 }}>
-            <input
-              ref={fileInputRef}
-              type="file"
-              accept="image/*"
-              capture="environment"
-              id="camera_photo"
-              onChange={handlePhotoChange}
-              style={{ display: 'none' }}
-            />
-            <Button variant="outline" disabled={uploadingPhoto} onClick={() => fileInputRef.current?.click()} style={{ opacity: uploadingPhoto ? 0.6 : 1 }}>
-              {uploadingPhoto ? 'Envoi…' : 'Prendre / envoyer une photo'}
-            </Button>
-            {photoError && <p style={{ color: color.argile, fontSize: 13, marginTop: 8 }}>{photoError}</p>}
-          </div>
+      <div style={{ maxWidth: 460, marginBottom: 40 }}>
+        <CameraPanel imageUrl={camera?.frame_url} takenAt={camera?.taken_at} />
+        <div style={{ marginTop: 10 }}>
+          <Link to="/admin/camera" style={{ fontFamily: font.mono, fontSize: 11, letterSpacing: '.1em', textTransform: 'uppercase' }}>
+            Gérer la caméra (partagée par tout le jardin) →
+          </Link>
         </div>
-        {id && <LiveBroadcast plantId={id} onFrameUploaded={load} />}
       </div>
 
       <form

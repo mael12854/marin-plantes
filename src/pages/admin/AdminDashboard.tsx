@@ -52,7 +52,12 @@ export function AdminDashboard() {
 
   return (
     <div className="mp-section" style={{ padding: '72px', maxWidth: 1100, margin: '0 auto' }}>
-      <h1 style={{ fontFamily: font.display, fontWeight: 300, fontSize: 40, margin: '0 0 40px' }}>Espace Marin</h1>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 16, marginBottom: 40, flexWrap: 'wrap' }}>
+        <h1 style={{ fontFamily: font.display, fontWeight: 300, fontSize: 40, margin: 0 }}>Espace Marin</h1>
+        <Button variant="outline" to="/admin/camera">
+          Caméra du jardin
+        </Button>
+      </div>
 
       <div style={{ fontFamily: font.mono, fontSize: 11, letterSpacing: '.16em', textTransform: 'uppercase', color: color.argile, marginBottom: 20 }}>
         Demandes en attente ({pending.length})
