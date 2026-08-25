@@ -29,8 +29,9 @@ export function Landing() {
   return (
     <div>
       {/* HERO */}
-      <section style={{ background: color.vertMarin, color: color.craie, padding: '110px 72px 96px' }}>
+      <section className="mp-section" style={{ background: color.vertMarin, color: color.craie, padding: '110px 72px 96px' }}>
         <h1
+          className="mp-hero-title"
           style={{
             fontFamily: font.display,
             fontWeight: 300,
@@ -44,6 +45,7 @@ export function Landing() {
           Ta plante pousse. Marin s'occupe du reste.
         </h1>
         <p
+          className="mp-hero-sub"
           style={{
             fontFamily: font.display,
             fontStyle: 'italic',
@@ -58,7 +60,7 @@ export function Landing() {
           Un jardinier réel, une plante réelle, quelque part. Tu la commandes, tu la vois vivre, tu
           viens la visiter.
         </p>
-        <div style={{ display: 'flex', gap: 16, marginTop: 48 }}>
+        <div style={{ display: 'flex', gap: 16, marginTop: 48, flexWrap: 'wrap' }}>
           <Button to="/commander" variant="solid" style={{ background: color.argile, borderColor: color.argile }}>
             Commander une plante
           </Button>
@@ -69,7 +71,7 @@ export function Landing() {
       </section>
 
       {/* COMMENT ÇA MARCHE */}
-      <section style={{ padding: '80px 72px', borderBottom: '1px solid rgba(36,28,22,.12)' }}>
+      <section className="mp-section" style={{ padding: '80px 72px', borderBottom: '1px solid rgba(36,28,22,.12)' }}>
         <div
           style={{
             fontFamily: font.mono,
@@ -82,7 +84,7 @@ export function Landing() {
         >
           Comment ça marche
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 1, background: 'rgba(36,28,22,.14)', border: '1px solid rgba(36,28,22,.14)' }}>
+        <div className="mp-grid-stack" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 1, background: 'rgba(36,28,22,.14)', border: '1px solid rgba(36,28,22,.14)' }}>
           {steps.map((s) => (
             <div key={s.n} style={{ background: color.craie, padding: 32 }}>
               <div style={{ fontFamily: font.mono, fontSize: 11, color: color.argile, marginBottom: 14 }}>{s.n}</div>
@@ -94,9 +96,9 @@ export function Landing() {
       </section>
 
       {/* APERÇU JOURNAL */}
-      <section style={{ padding: '80px 72px', background: color.nuitDeTablette, color: color.craie }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.15fr', gap: 56, alignItems: 'start', marginBottom: 40 }}>
-          <h2 style={{ fontFamily: font.display, fontWeight: 300, fontSize: 40, lineHeight: 1.1, margin: 0 }}>
+      <section className="mp-section" style={{ padding: '80px 72px', background: color.nuitDeTablette, color: color.craie }}>
+        <div className="mp-grid-stack" style={{ display: 'grid', gridTemplateColumns: '1fr 1.15fr', gap: 56, alignItems: 'start', marginBottom: 40 }}>
+          <h2 className="mp-h2" style={{ fontFamily: font.display, fontWeight: 300, fontSize: 40, lineHeight: 1.1, margin: 0 }}>
             Le journal de ta plante, en direct
           </h2>
           <p style={{ fontSize: 15, lineHeight: 1.7, color: 'rgba(242,238,227,.72)', margin: 0, maxWidth: '56ch' }}>
@@ -139,7 +141,7 @@ export function Landing() {
       </section>
 
       {/* CTA */}
-      <section style={{ padding: '72px', background: color.argile, color: '#FBF6EC', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 24 }}>
+      <section className="mp-section" style={{ padding: '72px', background: color.argile, color: '#FBF6EC', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 24 }}>
         <div>
           <div style={{ fontFamily: font.display, fontSize: 30, marginBottom: 8 }}>Prête à pousser ?</div>
           <div style={{ fontSize: 15, opacity: 0.85 }}>La commande prend deux minutes, sans engagement.</div>

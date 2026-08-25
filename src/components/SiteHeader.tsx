@@ -14,6 +14,7 @@ export function SiteHeader() {
 
   return (
     <header
+      className="mp-section mp-row-stack"
       style={{
         display: 'flex',
         justifyContent: 'space-between',
@@ -21,6 +22,8 @@ export function SiteHeader() {
         padding: '24px 72px',
         borderBottom: '1px solid rgba(36,28,22,.12)',
         background: color.craie,
+        gap: 12,
+        flexWrap: 'wrap',
       }}
     >
       <Link

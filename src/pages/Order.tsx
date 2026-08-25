@@ -32,7 +32,7 @@ export function Order() {
 
   if (done) {
     return (
-      <div style={{ padding: '96px 72px', maxWidth: 640, margin: '0 auto' }}>
+      <div className="mp-section" style={{ padding: '96px 72px', maxWidth: 640, margin: '0 auto' }}>
         <div style={{ border: '1px solid rgba(36,28,22,.14)', background: '#fff', borderLeft: `6px solid ${color.argile}`, padding: '32px 28px' }}>
           <div style={{ fontFamily: font.display, fontSize: 28, marginBottom: 12 }}>C'est noté</div>
           <p style={{ fontSize: 15, lineHeight: 1.7, color: 'rgba(36,28,22,.75)', margin: '0 0 18px' }}>
@@ -45,7 +45,7 @@ export function Order() {
   }
 
   return (
-    <div style={{ padding: '96px 72px', maxWidth: 640, margin: '0 auto' }}>
+    <div className="mp-section" style={{ padding: '96px 72px', maxWidth: 640, margin: '0 auto' }}>
       <div style={{ fontFamily: font.mono, fontSize: 11, letterSpacing: '.16em', textTransform: 'uppercase', color: color.argile, marginBottom: 16 }}>
         Commander
       </div>

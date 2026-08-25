@@ -3,11 +3,13 @@ import { color, font } from '../tokens';
 export function SiteFooter() {
   return (
     <footer
+      className="mp-section mp-row-stack"
       style={{
         padding: '32px 72px',
         borderTop: `1px solid ${'rgba(36,28,22,.14)'}`,
         display: 'flex',
         justifyContent: 'space-between',
+        gap: 8,
         fontFamily: font.mono,
         fontSize: 11,
         letterSpacing: '.12em',
