@@ -33,8 +33,10 @@ export function PlantDetail() {
     }
 
     load();
+    const interval = setInterval(load, 15000);
     return () => {
       cancelled = true;
+      clearInterval(interval);
     };
   }, [id]);
 
