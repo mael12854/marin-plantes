@@ -1,46 +1,68 @@
-import { useState } from 'react';
-import { TweakPanel } from './components/TweakPanel';
-import { Cover } from './sections/Cover';
-import { DoDont } from './sections/DoDont';
-import { Emails } from './sections/Emails';
-import { Fondation } from './sections/Fondation';
-import { Iconographie } from './sections/Iconographie';
-import { Logo } from './sections/Logo';
-import { Motifs } from './sections/Motifs';
-import { Motion } from './sections/Motion';
-import { Palette } from './sections/Palette';
-import { Photographie } from './sections/Photographie';
-import { ProduitLive } from './sections/ProduitLive';
-import { Sommaire } from './sections/Sommaire';
-import { TonDeVoix } from './sections/TonDeVoix';
-import { Typographie } from './sections/Typographie';
-import { defaultPhosphore } from './tokens';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Layout } from './components/Layout';
+import { ProtectedRoute } from './components/ProtectedRoute';
+import { AuthProvider } from './lib/AuthContext';
+import { Auth } from './pages/Auth';
+import { BrandGuidelines } from './pages/BrandGuidelines';
+import { ClientDashboard } from './pages/ClientDashboard';
+import { Landing } from './pages/Landing';
+import { Order } from './pages/Order';
+import { PlantDetail } from './pages/PlantDetail';
+import { AdminDashboard } from './pages/admin/AdminDashboard';
+import { AdminPlant } from './pages/admin/AdminPlant';
 
 function App() {
-  const [tu, setTu] = useState(true);
-  const [phos, setPhos] = useState(defaultPhosphore);
-  const [mono, setMono] = useState('M&P');
-
   return (
-    <div style={{ fontFamily: 'Archivo,sans-serif', color: '#241C16', background: '#F2EEE3' }}>
-      <TweakPanel tu={tu} onTuChange={setTu} phos={phos} onPhosChange={setPhos} mono={mono} onMonoChange={setMono} />
-      <div style={{ maxWidth: 1400, margin: '0 auto' }}>
-        <Cover />
-        <Sommaire />
-        <Fondation />
-        <Logo mono={mono} />
-        <Palette phos={phos} />
-        <Typographie />
-        <Motifs />
-        <TonDeVoix tu={tu} />
-        <Iconographie />
-        <Photographie />
-        <ProduitLive phos={phos} />
-        <Motion phos={phos} />
-        <Emails />
-        <DoDont />
-      </div>
-    </div>
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/charte" element={<BrandGuidelines />} />
+          <Route path="/" element={<Layout><Landing /></Layout>} />
+          <Route path="/commander" element={<Layout><Order /></Layout>} />
+          <Route path="/connexion" element={<Layout><Auth /></Layout>} />
+          <Route
+            path="/mon-jardin"
+            element={
+              <Layout>
+                <ProtectedRoute>
+                  <ClientDashboard />
+                </ProtectedRoute>
+              </Layout>
+            }
+          />
+          <Route
+            path="/plante/:id"
+            element={
+              <Layout>
+                <ProtectedRoute>
+                  <PlantDetail />
+                </ProtectedRoute>
+              </Layout>
+            }
+          />
+          <Route
+            path="/admin"
+            element={
+              <Layout>
+                <ProtectedRoute role="marin">
+                  <AdminDashboard />
+                </ProtectedRoute>
+              </Layout>
+            }
+          />
+          <Route
+            path="/admin/plante/:id"
+            element={
+              <Layout>
+                <ProtectedRoute role="marin">
+                  <AdminPlant />
+                </ProtectedRoute>
+              </Layout>
+            }
+          />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 
