@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  body { margin:0; background:#F2EEE3; -webkit-font-smoothing:antialiased; }
+  a { color:#1E3A2B; text-decoration:none; border-bottom:1px solid rgba(30,58,43,.35); }
+  a:hover { color:#C06A3E; border-bottom-color:#C06A3E; }
+  @keyframes blip { 0%,100% { opacity:1 } 50% { opacity:.15 } }
+  @keyframes scanline { 0% { transform:translateY(-10%) } 100% { transform:translateY(1100%) } }
+  @keyframes grow { 0% { transform:scaleY(.2); opacity:.3 } 100% { transform:scaleY(1); opacity:1 } }
+</style>
+</helmet>
+
+<div style="font-family:Archivo,sans-serif;color:#241C16;background:#F2EEE3">
+
+  <!-- COVER -->
+  <section style="background:#1E3A2B;color:#F2EEE3;padding:96px 72px 72px;position:relative;overflow:hidden">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(242,238,227,.55)">
+      <span>Marin &amp; Plantes</span>
+      <span>Brand guidelines — v1.0</span>
+    </div>
+    <div style="height:1px;background:rgba(242,238,227,.2);margin:20px 0 88px"></div>
+    <h1 style="font-family:Newsreader,serif;font-weight:300;font-size:104px;line-height:.95;letter-spacing:-.02em;margin:0;max-width:16ch;text-wrap:pretty">Ta plante pousse. Marin s'occupe du reste.</h1>
+    <p style="font-family:Newsreader,serif;font-style:italic;font-weight:300;font-size:26px;line-height:1.5;max-width:44ch;margin:40px 0 0;color:rgba(242,238,227,.78)">Un jardinier réel, une plante réelle, quelque part. Tu la commandes, tu la vois vivre, tu viens la visiter.</p>
+    <div style="display:flex;gap:14px;margin-top:64px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase">
+      <span style="border:1px solid rgba(242,238,227,.3);padding:8px 14px;border-radius:100px">Identité</span>
+      <span style="border:1px solid rgba(242,238,227,.3);padding:8px 14px;border-radius:100px">Voix</span>
+      <span style="border:1px solid rgba(242,238,227,.3);padding:8px 14px;border-radius:100px">Produit live</span>
+      <span style="border:1px solid rgba(242,238,227,.3);padding:8px 14px;border-radius:100px">Motion</span>
+    </div>
+  </section>
+
+  <!-- SOMMAIRE -->
+  <section style="padding:56px 72px;border-bottom:1px solid rgba(36,28,22,.12)">
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:28px;font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:2;color:rgba(36,28,22,.62)">
+      <div style="display:flex;flex-direction:column"><span style="color:#241C16">01 Fondation</span><span>Positionnement</span><span>Principes</span></div>
+      <div style="display:flex;flex-direction:column"><span style="color:#241C16">02 Identité</span><span>Logo &amp; variantes</span><span>Palette</span><span>Typographie</span></div>
+      <div style="display:flex;flex-direction:column"><span style="color:#241C16">03 Langage</span><span>Ton de voix</span><span>Iconographie</span><span>Photographie</span></div>
+      <div style="display:flex;flex-direction:column"><span style="color:#241C16">04 Produit</span><span>Journal live</span><span>Vue caméra</span><span>Motion</span></div>
+      <div style="display:flex;flex-direction:column"><span style="color:#241C16">05 Cadre</span><span>Emails</span><span>Do &amp; Don't</span></div>
+    </div>
+  </section>
+
+  <!-- 01 FONDATION -->
+  <section style="padding:80px 72px;border-bottom:1px solid rgba(36,28,22,.12)">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#C06A3E;margin-bottom:32px">01 — Fondation</div>
+    <div style="display:grid;grid-template-columns:1fr 1.2fr;gap:80px;align-items:start">
+      <div>
+        <h2 style="font-family:Newsreader,serif;font-weight:300;font-size:52px;line-height:1.05;letter-spacing:-.01em;margin:0 0 24px">Le luxe de la lenteur</h2>
+        <p style="font-size:16px;line-height:1.7;color:rgba(36,28,22,.75);margin:0 0 16px;max-width:46ch">Marin &amp; Plantes n'est pas une jardinerie. C'est une délégation : tu choisis une plante, Marin la plante, l'arrose, la taille, la surveille. Toi, tu regardes.</p>
+        <p style="font-size:16px;line-height:1.7;color:rgba(36,28,22,.75);margin:0;max-width:46ch">La marque doit faire ressentir deux choses en même temps : <em>ça existe vraiment</em> (preuve, journal, caméra, une visite possible) et <em>tu n'as rien à faire</em> (calme, aucune urgence, aucune notification anxieuse).</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(36,28,22,.14)">
+        <div style="background:#F2EEE3;padding:26px"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#C06A3E;margin-bottom:10px">01</div><div style="font-family:Newsreader,serif;font-size:24px;margin-bottom:8px">Preuve, pas promesse</div><div style="font-size:14px;line-height:1.6;color:rgba(36,28,22,.65)">Chaque action est horodatée. On montre plutôt que d'affirmer.</div></div>
+        <div style="background:#F2EEE3;padding:26px"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#C06A3E;margin-bottom:10px">02</div><div style="font-family:Newsreader,serif;font-size:24px;margin-bottom:8px">Marin est une personne</div><div style="font-size:14px;line-height:1.6;color:rgba(36,28,22,.65)">Pas un service anonyme. Il signe, il tutoie, il a des avis.</div></div>
+        <div style="background:#F2EEE3;padding:26px"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#C06A3E;margin-bottom:10px">03</div><div style="font-family:Newsreader,serif;font-size:24px;margin-bottom:8px">Le temps végétal</div><div style="font-size:14px;line-height:1.6;color:rgba(36,28,22,.65)">Rien ne clignote en rouge. Une plante ne demande jamais une réponse immédiate.</div></div>
+        <div style="background:#F2EEE3;padding:26px"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#C06A3E;margin-bottom:10px">04</div><div style="font-family:Newsreader,serif;font-size:24px;margin-bottom:8px">Toujours visitable</div><div style="font-size:14px;line-height:1.6;color:rgba(36,28,22,.65)">L'adresse, l'heure, le chemin : la visite est un droit, pas une option.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 LOGO -->
+  <section style="padding:80px 72px;border-bottom:1px solid rgba(36,28,22,.12)">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#C06A3E;margin-bottom:32px">02 — Logo &amp; variantes</div>
+    <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:64px;align-items:start">
+      <div>
+        <div style="border:1px solid rgba(36,28,22,.14);background:#fff;padding:72px 56px;display:flex;flex-direction:column;gap:10px">
+          <div style="font-family:Newsreader,serif;font-weight:300;font-size:58px;line-height:1;letter-spacing:-.015em;color:#1E3A2B">Marin <span style="color:#C06A3E">&amp;</span> Plantes</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:rgba(36,28,22,.5);padding-left:3px">Jardinier — depuis 2024</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px">
+          <div style="border:1px solid rgba(36,28,22,.14);background:#1E3A2B;height:150px;display:flex;align-items:center;justify-content:center"><div style="font-family:Newsreader,serif;font-weight:300;font-size:26px;color:#F2EEE3">Marin <span style="color:#C06A3E">&amp;</span> Plantes</div></div>
+          <div style="border:1px solid rgba(36,28,22,.14);background:#F2EEE3;height:150px;display:flex;align-items:center;justify-content:center"><div style="width:84px;height:84px;border-radius:50%;border:1px solid #1E3A2B;display:flex;align-items:center;justify-content:center;font-family:Newsreader,serif;font-size:26px;color:#1E3A2B">{{ mono }}</div></div>
+          <div style="border:1px solid rgba(36,28,22,.14);background:#C06A3E;height:150px;display:flex;align-items:center;justify-content:center"><div style="font-family:Newsreader,serif;font-weight:300;font-size:44px;color:#FBF6EC">&amp;</div></div>
+        </div>
+        <div style="display:flex;gap:24px;margin-top:14px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:rgba(36,28,22,.5)">
+          <span>Wordmark inversé — fond vert</span><span>Monogramme — favicon, tampon</span><span>Esperluette — sceau, étiquette</span>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:28px">
+        <div>
+          <div style="font-family:Newsreader,serif;font-size:22px;margin-bottom:10px">Construction</div>
+          <p style="font-size:14px;line-height:1.7;color:rgba(36,28,22,.7);margin:0">Le wordmark est composé en Newsreader Light, interlettrage −1,5 %. L'esperluette est toujours en Argile : c'est le seul point de couleur chaude du logo, et il signifie la relation entre le jardinier et la plante.</div>
+        </div>
+        <div>
+          <div style="font-family:Newsreader,serif;font-size:22px;margin-bottom:10px">Zone de respect</div>
+          <p style="font-size:14px;line-height:1.7;color:rgba(36,28,22,.7);margin:0">Marge minimale égale à la hauteur du « M » sur les quatre côtés. Taille minimale : 96 px de large à l'écran, 22 mm en impression. Sous cette taille, utiliser le monogramme.</p>
+        </div>
+        <div>
+          <div style="font-family:Newsreader,serif;font-size:22px;margin-bottom:10px">Interdits</div>
+          <ul style="font-size:14px;line-height:1.8;color:rgba(36,28,22,.7);margin:0;padding-left:18px">
+            <li>Pas de feuille, pousse ou arrosoir ajouté au wordmark.</li>
+            <li>Pas de gras, d'italique ni de contour.</li>
+            <li>Pas de logo posé sur une photo sans plaque de fond.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 PALETTE -->
+  <section style="padding:80px 72px;border-bottom:1px solid rgba(36,28,22,.12)">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#C06A3E;margin-bottom:32px">03 — Palette</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(36,28,22,.14);border:1px solid rgba(36,28,22,.14)">
+      <div style="background:#1E3A2B;padding:32px 24px;height:200px;display:flex;flex-direction:column;justify-content:flex-end;color:#F2EEE3"><div style="font-family:Newsreader,serif;font-size:24px">Vert Marin</div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;opacity:.7;margin-top:6px">#1E3A2B · 62 %</div></div>
+      <div style="background:#F2EEE3;padding:32px 24px;height:200px;display:flex;flex-direction:column;justify-content:flex-end"><div style="font-family:Newsreader,serif;font-size:24px">Craie</div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;opacity:.6;margin-top:6px">#F2EEE3 · 24 %</div></div>
+      <div style="background:#C06A3E;padding:32px 24px;height:200px;display:flex;flex-direction:column;justify-content:flex-end;color:#FBF6EC"><div style="font-family:Newsreader,serif;font-size:24px">Argile</div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;opacity:.8;margin-top:6px">#C06A3E · 8 %</div></div>
+      <div style="background:#241C16;padding:32px 24px;height:200px;display:flex;flex-direction:column;justify-content:flex-end;color:#F2EEE3"><div style="font-family:Newsreader,serif;font-size:24px">Terre</div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;opacity:.7;margin-top:6px">#241C16 · texte</div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(36,28,22,.14);border:1px solid rgba(36,28,22,.14);border-top:0">
+      <div style="background:#6B8F5E;padding:22px 24px;height:96px;display:flex;flex-direction:column;justify-content:flex-end;color:#F7FAF3"><div style="font-size:14px;font-weight:500">Pousse</div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;opacity:.85;margin-top:4px">#6B8F5E — graphes, jauges</div></div>
+      <div style="background:#E4DDCB;padding:22px 24px;height:96px;display:flex;flex-direction:column;justify-content:flex-end"><div style="font-size:14px;font-weight:500">Craie foncée</div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;opacity:.6;margin-top:4px">#E4DDCB — surfaces</div></div>
+      <div style="background:#0E1A13;padding:22px 24px;height:96px;display:flex;flex-direction:column;justify-content:flex-end;color:{{ phos }}"><div style="font-size:14px;font-weight:500">Nuit de tablette</div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;opacity:.85;margin-top:4px">#0E1A13 — fond de l'écran</div></div>
+      <div style="background:#0E1A13;padding:22px 24px;height:96px;display:flex;flex-direction:column;justify-content:flex-end;color:{{ phos }};border-left:0"><div style="font-size:14px;font-weight:500">Phosphore</div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;opacity:.85;margin-top:4px">Signal live uniquement</div></div>
+    </div>
+    <p style="font-size:14px;line-height:1.7;color:rgba(36,28,22,.65);margin:20px 0 0;max-width:70ch">Deux fonds seulement : Craie pour tout ce qui est lisible, Vert Marin pour les respirations et la couverture. Le Phosphore n'est jamais décoratif — il n'apparaît que sur la Nuit de tablette, pour signaler que l'écran posé dans l'herbe est réellement en ligne. Aucun rouge dans la marque : rien n'est jamais une alerte.</p>
+  </section>
+
+  <!-- 04 TYPO -->
+  <section style="padding:80px 72px;border-bottom:1px solid rgba(36,28,22,.12)">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#C06A3E;margin-bottom:32px">04 — Typographie</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(36,28,22,.14);border:1px solid rgba(36,28,22,.14)">
+      <div style="background:#F2EEE3;padding:32px">
+        <div style="font-family:Newsreader,serif;font-weight:300;font-size:76px;line-height:1;margin-bottom:18px">Aa</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#C06A3E;margin-bottom:8px">Newsreader Light / Italic</div>
+        <div style="font-size:14px;line-height:1.7;color:rgba(36,28,22,.7)">Titres, citations de Marin, chiffres de croissance. Jamais en dessous de 20 px. Interlignage serré (0,95–1,1).</div>
+      </div>
+      <div style="background:#F2EEE3;padding:32px">
+        <div style="font-family:Archivo,sans-serif;font-weight:500;font-size:76px;line-height:1;margin-bottom:18px">Aa</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#C06A3E;margin-bottom:8px">Archivo 400 / 500 / 600</div>
+        <div style="font-size:14px;line-height:1.7;color:rgba(36,28,22,.7)">Interface, paragraphes, boutons, formulaires. 14–17 px, interlignage 1,6–1,7.</div>
+      </div>
+      <div style="background:#F2EEE3;padding:32px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:70px;line-height:1;margin-bottom:24px">Aa</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#C06A3E;margin-bottom:8px">IBM Plex Mono 400</div>
+        <div style="font-size:14px;line-height:1.7;color:rgba(36,28,22,.7)">Tout ce qui est mesuré : horodatages, journal live, températures, identifiants de plante, étiquettes.</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;margin-top:40px;align-items:start">
+      <div>
+        <div style="font-family:Newsreader,serif;font-weight:300;font-size:44px;line-height:1.05;margin:0 0 8px">Le monstera de Camille</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#C06A3E;letter-spacing:.1em;margin-bottom:14px">PLT-0148 · CARRÉ NORD · PRÈS DU POMMIER</div>
+        <p style="font-size:16px;line-height:1.7;color:rgba(36,28,22,.75);margin:0">Planté le 14 mars. Arrosé 41 fois. Taillé deux fois. Visité une fois par Camille, un dimanche matin, avec un café.</p>
+      </div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:2.1;color:rgba(36,28,22,.7)">
+        <div>Titre écran ····· Newsreader 300 / 44–104 px / −1,5 %</div>
+        <div>Sous-titre ······ Newsreader Italic 300 / 22–26 px</div>
+        <div>Corps ··········· Archivo 400 / 16 px / 1,7</div>
+        <div>Étiquette ······· Plex Mono 400 / 11 px / +0,14 em / caps</div>
+        <div>Journal ········· Plex Mono 400 / 13 px / 1,8</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 MOTIFS -->
+  <section style="padding:80px 72px;border-bottom:1px solid rgba(36,28,22,.12)">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#C06A3E;margin-bottom:32px">05 — Motifs</div>
+    <div style="display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:start;margin-bottom:44px">
+      <h2 style="font-family:Newsreader,serif;font-weight:300;font-size:52px;line-height:1.05;margin:0">Quatre motifs, tous issus du métier</h2>
+      <p style="font-size:16px;line-height:1.7;color:rgba(36,28,22,.75);margin:0;max-width:58ch">Aucun motif de la marque n'est décoratif : chacun est la trace d'un geste réel de Marin. Un motif ne se superpose jamais à un autre, et n'occupe jamais plus d'un tiers d'une surface. En cas de doute : du vide.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(36,28,22,.14);border:1px solid rgba(36,28,22,.14)">
+
+      <div style="background:#F2EEE3;padding:0">
+        <div style="height:220px;background-color:#1E3A2B;background-image:radial-gradient(circle at center, rgba(242,238,227,.55) 1.6px, transparent 1.7px);background-size:22px 22px"></div>
+        <div style="padding:26px 28px 30px">
+          <div style="font-family:Newsreader,serif;font-size:26px;margin-bottom:6px">Le calendrier d'arrosage</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#C06A3E;margin-bottom:12px">Grille de points · 22 px</div>
+          <p style="font-size:14px;line-height:1.7;color:rgba(36,28,22,.7);margin:0">Un point = un arrosage. C'est le motif principal, la texture par défaut des grands fonds verts. Point plein = fait, point évidé = prévu. Sur Craie, points en Terre à 20 % d'opacité.</p>
+        </div>
+      </div>
+
+      <div style="background:#F2EEE3;padding:0">
+        <div style="height:220px;background-color:#E4DDCB;background-image:repeating-linear-gradient(90deg, rgba(36,28,22,.22) 0 1px, transparent 1px 34px)"></div>
+        <div style="padding:26px 28px 30px">
+          <div style="font-family:Newsreader,serif;font-size:26px;margin-bottom:6px">Les sillons</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#C06A3E;margin-bottom:12px">Filets verticaux · 34 px</div>
+          <p style="font-size:14px;line-height:1.7;color:rgba(36,28,22,.7)">Les sillons que Marin creuse lui-même à la pelle, vus de dessus — inégaux, faits à la main. Séparateur de sections, fond des plans du jardin. Toujours vertical, jamais incliné, jamais animé.</p>
+        </div>
+      </div>
+
+      <div style="background:#F2EEE3;padding:0">
+        <div style="height:220px;background-color:#0E1A13;background-image:linear-gradient(rgba(147,245,162,.13) 1px, transparent 1px), linear-gradient(90deg, rgba(147,245,162,.13) 1px, transparent 1px);background-size:28px 28px;position:relative;overflow:hidden">
+          <div style="position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,rgba(147,245,162,.5),transparent);animation:scanline 5.5s linear infinite"></div>
+        </div>
+        <div style="padding:26px 28px 30px">
+          <div style="font-family:Newsreader,serif;font-size:26px;margin-bottom:6px">La vieille dalle</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#C06A3E;margin-bottom:12px">Grille phosphore · 28 px</div>
+          <p style="font-size:14px;line-height:1.7;color:rgba(36,28,22,.7);margin:0">La grille de pixels de la tablette posée dans l'herbe. Réservée au territoire live : la vue caméra et le journal. C'est le seul motif qui bouge (une ligne de balayage, 5,5 s, une seule fois visible à l'écran). Interdit sur les supports imprimés et commerciaux.</p>
+        </div>
+      </div>
+
+      <div style="background:#F2EEE3;padding:0">
+        <div style="height:220px;background:#F2EEE3;display:flex;align-items:center;justify-content:center;gap:14px;padding:0 28px">
+          <div style="width:96px;height:130px;background:#E4DDCB;border-left:6px solid #C06A3E;display:flex;flex-direction:column;justify-content:space-between;padding:12px 10px"><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;color:rgba(36,28,22,.6)">PLT-0148</div><div style="font-family:Newsreader,serif;font-size:15px;line-height:1.2">Monstera</div></div>
+          <div style="width:96px;height:130px;background:#1E3A2B;border-left:6px solid #C06A3E;display:flex;flex-direction:column;justify-content:space-between;padding:12px 10px;color:#F2EEE3"><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;opacity:.7">PLT-0149</div><div style="font-family:Newsreader,serif;font-size:15px;line-height:1.2">Olivier</div></div>
+          <div style="width:96px;height:130px;background:#C06A3E;border-left:6px solid #241C16;display:flex;flex-direction:column;justify-content:space-between;padding:12px 10px;color:#FBF6EC"><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;opacity:.85">PLT-0150</div><div style="font-family:Newsreader,serif;font-size:15px;line-height:1.2">Ficus</div></div>
+        </div>
+        <div style="padding:26px 28px 30px">
+          <div style="font-family:Newsreader,serif;font-size:26px;margin-bottom:6px">L'étiquette</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#C06A3E;margin-bottom:12px">Bloc 3:4 · liseré 6 px</div>
+          <p style="font-size:14px;line-height:1.7;color:rgba(36,28,22,.7);margin:0">L'étiquette plantée dans le pot devient l'unité de mise en page : liseré Argile à gauche, identifiant en mono en haut, nom en Newsreader en bas. Cartes, vignettes, emails, réseaux sociaux : même bloc.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 TON DE VOIX -->
+  <section style="padding:80px 72px;border-bottom:1px solid rgba(36,28,22,.12)">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#C06A3E;margin-bottom:32px">06 — Ton de voix</div>
+    <div style="display:grid;grid-template-columns:1fr 1.15fr;gap:64px;align-items:start">
+      <div>
+        <h2 style="font-family:Newsreader,serif;font-weight:300;font-size:52px;line-height:1.05;margin:0 0 20px">{{ voixTitre }}</h2>
+        <p style="font-size:16px;line-height:1.7;color:rgba(36,28,22,.75);margin:0 0 28px;max-width:46ch">C'est Marin qui écrit, à la première personne, au présent. Phrases courtes. Un fait, puis un geste. Jamais de point d'exclamation, jamais de vocabulaire de plateforme (« utilisateur », « abonnement », « dashboard »).</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(36,28,22,.14);border:1px solid rgba(36,28,22,.14)">
+          <div style="background:#F2EEE3;padding:20px"><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:#6B8F5E;margin-bottom:10px">ON DIT</div><div style="font-size:14px;line-height:1.7;color:rgba(36,28,22,.8)">« J'ai arrosé »<br>« Ta plante »<br>« Passe quand tu veux »<br>« Elle a soif »</div></div>
+          <div style="background:#F2EEE3;padding:20px"><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:#C06A3E;margin-bottom:10px">ON NE DIT PAS</div><div style="font-size:14px;line-height:1.7;color:rgba(36,28,22,.55);text-decoration:line-through;text-decoration-color:rgba(192,106,62,.5)">« Arrosage effectué »<br>« Votre actif végétal »<br>« Réserver un créneau »<br>« Alerte hydrique »</div></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div style="background:#1E3A2B;color:#F2EEE3;padding:32px 34px">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;opacity:.6;margin-bottom:14px">NOTIFICATION — CROISSANCE</div>
+          <div style="font-family:Newsreader,serif;font-style:italic;font-weight:300;font-size:26px;line-height:1.45">{{ exA }}</div>
+        </div>
+        <div style="background:#E4DDCB;padding:32px 34px">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;color:rgba(36,28,22,.5);margin-bottom:14px">MÉTÉO — RASSURER</div>
+          <div style="font-family:Newsreader,serif;font-style:italic;font-weight:300;font-size:26px;line-height:1.45">{{ exB }}</div>
+        </div>
+        <div style="background:#C06A3E;color:#FBF6EC;padding:32px 34px">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;opacity:.75;margin-bottom:14px">INVITATION — VISITE</div>
+          <div style="font-family:Newsreader,serif;font-style:italic;font-weight:300;font-size:26px;line-height:1.45">{{ exC }}</div>
+        </div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;line-height:1.9;color:rgba(36,28,22,.6);margin-top:6px">
+          <div>Signature ······· « Marin »</div>
+          <div>Longueur max ···· 2 phrases en notification, 4 en email</div>
+          <div>Chiffres ········ toujours concrets (4 cm, 41 arrosages, 18 h)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 ICONOGRAPHIE -->
+  <section style="padding:80px 72px;border-bottom:1px solid rgba(36,28,22,.12)">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#C06A3E;margin-bottom:32px">07 — Iconographie</div>
+    <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:64px;align-items:start">
+      <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:rgba(36,28,22,.14);border:1px solid rgba(36,28,22,.14)">
+        <div style="background:#F2EEE3;aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px"><div style="width:26px;height:26px;border:1.5px solid #1E3A2B;border-radius:50%"></div><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(36,28,22,.55)">GOUTTE</div></div>
+        <div style="background:#F2EEE3;aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px"><div style="width:26px;height:26px;border:1.5px solid #1E3A2B"></div><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(36,28,22,.55)">POT</div></div>
+        <div style="background:#F2EEE3;aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px"><div style="width:26px;height:26px;border:1.5px solid #1E3A2B;border-radius:50% 0 50% 0"></div><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(36,28,22,.55)">FEUILLE</div></div>
+        <div style="background:#F2EEE3;aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px"><div style="width:26px;height:26px;border:1.5px solid #1E3A2B;border-radius:13px 13px 0 0"></div><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(36,28,22,.55)">PELLE</div></div>
+        <div style="background:#F2EEE3;aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px"><div style="width:26px;height:14px;border:1.5px solid #1E3A2B;border-radius:3px"></div><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(36,28,22,.55)">TABLETTE</div></div>
+        <div style="background:#F2EEE3;aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px"><div style="width:26px;height:26px;border:1.5px solid #1E3A2B;border-radius:50%;border-style:dashed"></div><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(36,28,22,.55)">VISITE</div></div>
+      </div>
+      <div>
+        <div style="font-family:Newsreader,serif;font-size:26px;margin-bottom:12px">Géométrie, pas illustration</div>
+        <p style="font-size:14px;line-height:1.7;color:rgba(36,28,22,.7);margin:0 0 14px">Les icônes se construisent à partir de trois primitives seulement : le cercle, le carré, l'arc. Trait de 1,5 px, extrémités carrées, grille de 24 px, aucun remplissage, aucun angle arrondi ajouté.</p>
+        <p style="font-size:14px;line-height:1.7;color:rgba(36,28,22,.7);margin:0">Le tiret discontinu signifie toujours « prévu, pas encore fait ». Pas de jeux d'icônes tiers, pas d'emoji, pas de plante dessinée — les plantes sont photographiées, jamais illustrées.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 PHOTOGRAPHIE -->
+  <section style="padding:80px 72px;border-bottom:1px solid rgba(36,28,22,.12)">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#C06A3E;margin-bottom:32px">08 — Photographie des plantes</div>
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:16px;margin-bottom:16px">
+      <div style="height:340px;position:relative"><image-slot id="photo-hero" shape="rect" placeholder="La plante dans l'herbe du jardin, fin d'après-midi"></image-slot></div>
+      <div style="height:340px;position:relative"><image-slot id="photo-detail" shape="rect" placeholder="Détail : une feuille, la main terreuse de Marin"></image-slot></div>
+      <div style="height:340px;position:relative"><image-slot id="photo-marin" shape="rect" placeholder="Marin qui creuse à la pelle, jamais posé face caméra"></image-slot></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:28px">
+      <div style="height:200px;position:relative"><image-slot id="photo-serre" shape="rect" placeholder="Le jardin des grands-parents en large, herbe haute"></image-slot></div>
+      <div style="height:200px;position:relative"><image-slot id="photo-terre" shape="rect" placeholder="La pelle plantée dans la terre retournée"></image-slot></div>
+      <div style="height:200px;position:relative"><image-slot id="photo-visite" shape="rect" placeholder="La vieille tablette calée sur une brique, dans l'herbe"></image-slot></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:48px">
+      <div><div style="font-family:Newsreader,serif;font-size:22px;margin-bottom:10px">Lumière</div><p style="font-size:14px;line-height:1.7;color:rgba(36,28,22,.7);margin:0">Lumière du jardin, fin d'après-midi. Ombres longues, herbe un peu jaunie, rien de rangé. Jamais de flash, jamais de fond studio blanc, jamais de plante détourée.</p></div>
+      <div><div style="font-family:Newsreader,serif;font-size:22px;margin-bottom:10px">Cadrage</div><p style="font-size:14px;line-height:1.7;color:rgba(36,28,22,.7);margin:0">Deux distances : le plan large qui montre le lieu, le très gros plan qui montre la matière. Rien entre les deux. Le pot et l'étiquette restent visibles : ils prouvent que c'est la bonne plante.</p></div>
+      <div><div style="font-family:Newsreader,serif;font-size:22px;margin-bottom:10px">Traitement</div><p style="font-size:14px;line-height:1.7;color:rgba(36,28,22,.7);margin:0">Verts légèrement désaturés pour rejoindre le Vert Marin, hautes lumières crème. Pas de filtre, pas de vignettage, aucun texte incrusté dans l'image.</p></div>
+    </div>
+  </section>
+
+  <!-- 09 PRODUIT LIVE -->
+  <section style="padding:80px 72px;background:#0E1A13;color:#F2EEE3">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:{{ phos }};margin-bottom:32px">09 — Journal live &amp; vue caméra</div>
+    <div style="display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:start;margin-bottom:44px">
+      <h2 style="font-family:Newsreader,serif;font-weight:300;font-size:52px;line-height:1.05;margin:0">Une tablette dans l'herbe</h2>
+      <p style="font-size:16px;line-height:1.7;color:rgba(242,238,227,.72);margin:0;max-width:60ch">Le direct, ce n'est pas une salle de contrôle : c'est une vieille tablette calée sur une brique dans l'herbe, qui filme un carré du jardin. Fond Nuit de tablette, mono, Phosphore comme seule couleur de signal — l'esthétique d'un écran fatigué, pas d'un système de sécurité.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1.05fr 1fr;gap:24px">
+
+      <!-- journal -->
+      <div style="border:1px solid rgba(147,245,162,.25);background:rgba(242,238,227,.03)">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid rgba(147,245,162,.18);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em">
+          <span style="color:{{ phos }}">JOURNAL — PLT-0148</span>
+          <span style="display:flex;align-items:center;gap:8px;color:rgba(242,238,227,.6)"><span style="width:7px;height:7px;border-radius:50%;background:{{ phos }};animation:blip 2.4s ease-in-out infinite"></span>EN DIRECT</span>
+        </div>
+        <div style="padding:8px 20px 20px;font-family:'IBM Plex Mono',monospace;font-size:13px;line-height:1.8">
+          <div style="display:grid;grid-template-columns:64px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid rgba(242,238,227,.08)"><span style="color:{{ phos }}">08:12</span><span>Arrosage — 0,4 L <span style="color:rgba(242,238,227,.45)">· Marin</span></span></div>
+          <div style="display:grid;grid-template-columns:64px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid rgba(242,238,227,.08)"><span style="color:{{ phos }}">08:14</span><span>Terre retournée à la pelle sur 20 cm</span></div>
+          <div style="display:grid;grid-template-columns:64px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid rgba(242,238,227,.08)"><span style="color:{{ phos }}">11:03</span><span>Mesure — 61 cm <span style="color:#6B8F5E">+4 cm ce mois</span></span></div>
+          <div style="display:grid;grid-template-columns:64px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid rgba(242,238,227,.08)"><span style="color:{{ phos }}">14:40</span><span>Taille — deux feuilles sèches retirées</span></div>
+          <div style="display:grid;grid-template-columns:64px 1fr;gap:16px;padding:12px 0;color:rgba(242,238,227,.4)"><span>demain</span><span>Arrosage prévu <span style="border:1px dashed rgba(242,238,227,.35);padding:1px 6px;margin-left:4px">PRÉVU</span></span></div>
+        </div>
+      </div>
+
+      <!-- camera -->
+      <div style="border:1px solid rgba(147,245,162,.25);background:rgba(242,238,227,.03)">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid rgba(147,245,162,.18);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em">
+          <span style="color:{{ phos }}">TABLETTE — CARRÉ NORD</span>
+          <span style="color:rgba(242,238,227,.6)">14:41:07</span>
+        </div>
+        <div style="position:relative;height:300px;background:#0A130E;overflow:hidden">
+          <image-slot id="cam-feed" shape="rect" placeholder="Image du flux caméra"></image-slot>
+          <div style="position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(147,245,162,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(147,245,162,.07) 1px, transparent 1px);background-size:28px 28px"></div>
+          <div style="position:absolute;left:0;right:0;top:0;height:2px;background:linear-gradient(90deg,transparent,rgba(147,245,162,.45),transparent);animation:scanline 6s linear infinite;pointer-events:none"></div>
+          <div style="position:absolute;top:14px;left:16px;display:flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:{{ phos }};pointer-events:none"><span style="width:7px;height:7px;border-radius:50%;background:{{ phos }};animation:blip 2.4s ease-in-out infinite"></span>REC</div>
+          <div style="position:absolute;top:14px;right:16px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:rgba(147,245,162,.75);text-align:right;line-height:1.7;pointer-events:none">640 × 480<br>BATT 34 %</div>
+          <div style="position:absolute;bottom:14px;right:16px;width:46px;height:46px;border:1px solid rgba(147,245,162,.5);pointer-events:none"></div>
+        </div>
+        <div style="padding:16px 20px;font-family:'IBM Plex Mono',monospace;font-size:11px;line-height:1.9;color:rgba(242,238,227,.55);border-top:1px solid rgba(147,245,162,.18)">
+          <div>1 image / s, jamais de son, 640 × 480 assumé.</div>
+          <div>Cadre fixe et un peu de travers : on ne redresse pas.</div>
+          <div>Hors ligne : « la tablette dort, Marin la rallumera. »</div>
+        </div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:44px;margin-top:44px">
+      <div><div style="font-family:Newsreader,serif;font-size:22px;margin-bottom:10px">Horodatage obligatoire</div><p style="font-size:14px;line-height:1.7;color:rgba(242,238,227,.65);margin:0">Aucune ligne de journal sans heure. Le passé est en Craie, le prévu est en pointillés à 40 % : la promesse est visuellement plus faible que le fait.</p></div>
+      <div><div style="font-family:Newsreader,serif;font-size:22px;margin-bottom:10px">Un seul point qui clignote</div><p style="font-size:14px;line-height:1.7;color:rgba(242,238,227,.65);margin:0">Le pastille « en direct » est le seul élément pulsant d'un écran, 2,4 s par cycle. Deux points qui clignotent en même temps, c'est une erreur de design.</p></div>
+      <div><div style="font-family:Newsreader,serif;font-size:22px;margin-bottom:10px">La tablette assume</div><p style="font-size:14px;line-height:1.7;color:rgba(242,238,227,.65);margin:0">On garde l'esthétique de l'écran fatigué : grille de pixels, REC, batterie, cadre de travers. C'est une vieille tablette dans l'herbe, pas un système de sécurité — et ça se voit, exprès.</p></div>
+    </div>
+  </section>
+
+  <!-- 10 MOTION -->
+  <section style="padding:80px 72px;border-bottom:1px solid rgba(36,28,22,.12)">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#C06A3E;margin-bottom:32px">10 — Motion</div>
+    <div style="display:grid;grid-template-columns:1fr 1.15fr;gap:64px;align-items:start">
+      <div>
+        <h2 style="font-family:Newsreader,serif;font-weight:300;font-size:52px;line-height:1.05;margin:0 0 20px">Ça pousse, ça ne saute pas</h2>
+        <p style="font-size:16px;line-height:1.7;color:rgba(36,28,22,.75);margin:0 0 16px;max-width:46ch">Toute animation part du bas et grandit, comme une tige. Origine de transformation en bas (<span style="font-family:'IBM Plex Mono',monospace;font-size:14px">transform-origin: bottom</span>), jamais de rebond, jamais d'entrée par la droite.</p>
+        <p style="font-size:16px;line-height:1.7;color:rgba(36,28,22,.75);margin:0;max-width:46ch">Une nouvelle ligne de journal ne surgit pas : elle se déplie en 420 ms. Rien ne dure moins de 200 ms, rien ne dépasse 700 ms sauf le balayage caméra.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(36,28,22,.14);border:1px solid rgba(36,28,22,.14);font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.9;color:rgba(36,28,22,.7)">
+        <div style="background:#F2EEE3;padding:22px"><div style="color:#241C16;margin-bottom:6px">Pousse</div>420 ms<br>cubic-bezier(.22,.68,.2,1)<br>scaleY + opacité</div>
+        <div style="background:#F2EEE3;padding:22px"><div style="color:#241C16;margin-bottom:6px">Respiration</div>2 400 ms<br>ease-in-out, infini<br>opacité 1 → .15</div>
+        <div style="background:#F2EEE3;padding:22px"><div style="color:#241C16;margin-bottom:6px">Balayage</div>6 000 ms<br>linéaire, infini<br>caméra seulement</div>
+        <div style="background:#F2EEE3;padding:22px"><div style="color:#241C16;margin-bottom:6px">Page</div>240 ms<br>fondu simple<br>aucun glissement</div>
+      </div>
+    </div>
+    <div style="margin-top:32px;background:#0E1A13;padding:28px 24px;display:flex;align-items:flex-end;gap:10px;height:120px">
+      <div style="width:34px;height:30%;background:#6B8F5E;transform-origin:bottom;animation:grow 1.6s cubic-bezier(.22,.68,.2,1) infinite alternate"></div>
+      <div style="width:34px;height:55%;background:#6B8F5E;transform-origin:bottom;animation:grow 1.9s cubic-bezier(.22,.68,.2,1) infinite alternate"></div>
+      <div style="width:34px;height:80%;background:{{ phos }};transform-origin:bottom;animation:grow 2.2s cubic-bezier(.22,.68,.2,1) infinite alternate"></div>
+      <div style="width:34px;height:45%;background:#6B8F5E;transform-origin:bottom;animation:grow 2.6s cubic-bezier(.22,.68,.2,1) infinite alternate"></div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:rgba(242,238,227,.5);margin-left:16px;align-self:flex-end">Croissance mensuelle — entrée par le bas, une barre après l'autre</div>
+    </div>
+  </section>
+
+  <!-- 11 EMAILS -->
+  <section style="padding:80px 72px;border-bottom:1px solid rgba(36,28,22,.12)">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#C06A3E;margin-bottom:32px">11 — Emails &amp; notifications</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;align-items:start">
+      <div style="border:1px solid rgba(36,28,22,.14);background:#fff">
+        <div style="border-left:6px solid #C06A3E;padding:24px 22px">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:rgba(36,28,22,.5);margin-bottom:16px">LUNDI 08:20 · PLT-0148</div>
+          <div style="font-family:Newsreader,serif;font-size:28px;line-height:1.2;margin-bottom:12px">Elle a bu ce matin</div>
+          <p style="font-size:14px;line-height:1.7;color:rgba(36,28,22,.72);margin:0 0 18px">0,4 L, et j'ai tourné le pot vers l'est. Elle fait 61 cm, quatre de plus que le mois dernier.</p>
+          <div style="font-family:Newsreader,serif;font-style:italic;font-size:16px;color:rgba(36,28,22,.6)">— Marin</div>
+        </div>
+      </div>
+      <div style="border:1px solid rgba(36,28,22,.14);background:#1E3A2B;color:#F2EEE3">
+        <div style="padding:24px 22px">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;opacity:.6;margin-bottom:16px">INVITATION — VISITE</div>
+          <div style="font-family:Newsreader,serif;font-size:28px;line-height:1.2;margin-bottom:12px">Samedi, si tu veux</div>
+          <p style="font-size:14px;line-height:1.7;opacity:.78;margin:0 0 20px">Le jardin est ouvert toute la journée. Ta plante est dans le carré nord, près du pommier. Je serai là, avec la pelle.</p>
+          <div style="display:inline-block;border:1px solid rgba(242,238,227,.4);padding:10px 18px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em">RÉSERVER UNE HEURE</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="background:#E4DDCB;padding:16px 18px;font-size:14px;line-height:1.6"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:rgba(36,28,22,.5);display:block;margin-bottom:6px">PUSH · 1 LIGNE</span>Marin a taillé ton monstera.</div>
+        <div style="background:#E4DDCB;padding:16px 18px;font-size:14px;line-height:1.6"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:rgba(36,28,22,.5);display:block;margin-bottom:6px">PUSH · 1 LIGNE</span>+4 cm ce mois. Regarde la caméra.</div>
+        <div style="font-size:14px;line-height:1.7;color:rgba(36,28,22,.7)">Rythme maximal : un email par semaine, un push par jour, jamais avant 8 h ni après 20 h. Objet en minuscules, sans emoji, sans urgence. Aucune notification n'annonce une mauvaise nouvelle sans dire ce que Marin a déjà fait pour la régler.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 DO & DON'T -->
+  <section style="padding:80px 72px 110px">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#C06A3E;margin-bottom:32px">12 — Do &amp; Don't</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+      <div style="border:1px solid rgba(36,28,22,.14);padding:32px;background:#F7F4EA">
+        <div style="font-family:Newsreader,serif;font-size:30px;margin-bottom:20px;color:#1E3A2B">On fait</div>
+        <div style="display:flex;flex-direction:column;gap:14px;font-size:15px;line-height:1.6;color:rgba(36,28,22,.78)">
+          <div style="display:flex;gap:12px"><span style="color:#6B8F5E;font-family:'IBM Plex Mono',monospace">+</span>Nommer la plante et son numéro dans la même phrase.</div>
+          <div style="display:flex;gap:12px"><span style="color:#6B8F5E;font-family:'IBM Plex Mono',monospace">+</span>Laisser du vide : au moins 30 % de chaque écran.</div>
+          <div style="display:flex;gap:12px"><span style="color:#6B8F5E;font-family:'IBM Plex Mono',monospace">+</span>Garder le live sombre et le reste clair.</div>
+          <div style="display:flex;gap:12px"><span style="color:#6B8F5E;font-family:'IBM Plex Mono',monospace">+</span>Signer chaque message « Marin ».</div>
+          <div style="display:flex;gap:12px"><span style="color:#6B8F5E;font-family:'IBM Plex Mono',monospace">+</span>Toujours offrir la visite comme sortie de secours.</div>
+        </div>
+      </div>
+      <div style="border:1px solid rgba(36,28,22,.14);padding:32px;background:#F7F4EA">
+        <div style="font-family:Newsreader,serif;font-size:30px;margin-bottom:20px;color:#C06A3E">On ne fait pas</div>
+        <div style="display:flex;flex-direction:column;gap:14px;font-size:15px;line-height:1.6;color:rgba(36,28,22,.78)">
+          <div style="display:flex;gap:12px"><span style="color:#C06A3E;font-family:'IBM Plex Mono',monospace">−</span>Du rouge, des badges d'alerte, des compteurs qui pressent.</div>
+          <div style="display:flex;gap:12px"><span style="color:#C06A3E;font-family:'IBM Plex Mono',monospace">−</span>Du dégradé, de l'ombre portée, du verre dépoli.</div>
+          <div style="display:flex;gap:12px"><span style="color:#C06A3E;font-family:'IBM Plex Mono',monospace">−</span>Deux motifs superposés, ou un motif sur une photo.</div>
+          <div style="display:flex;gap:12px"><span style="color:#C06A3E;font-family:'IBM Plex Mono',monospace">−</span>Des plantes illustrées, des icônes de feuille mignonnes.</div>
+          <div style="display:flex;gap:12px"><span style="color:#C06A3E;font-family:'IBM Plex Mono',monospace">−</span>Parler de « votre expérience » : on parle de sa plante.</div>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:64px;padding-top:28px;border-top:1px solid rgba(36,28,22,.14);display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(36,28,22,.5)">
+      <span>Marin &amp; Plantes — Brand guidelines v1.0</span>
+      <span>Questions : marinetplantes@yopmail.com</span>
+    </div>
+  </section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;tutoiement&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Voix&quot;},&quot;phosphore&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#93F5A2&quot;,&quot;options&quot;:[&quot;#93F5A2&quot;,&quot;#C7F06A&quot;,&quot;#7ED9F5&quot;,&quot;#F5C56A&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Produit live&quot;},&quot;monogramme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;M&amp;P&quot;,&quot;options&quot;:[&quot;M&amp;P&quot;,&quot;M&quot;,&quot;&amp;&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Logo&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const tu = this.props.tutoiement ?? true;
+    const phos = this.props.phosphore ?? "#93F5A2";
+    const mono = this.props.monogramme ?? "M&P";
+    return {
+      phos,
+      mono,
+      voixTitre: tu ? "Marin te tutoie" : "Marin vous vouvoie",
+      exA: tu ? "Ton ficus a pris 4 cm ce mois-ci. Je l'ai tourné vers le sud." : "Votre ficus a pris 4 cm ce mois-ci. Je l'ai tourné vers le sud.",
+      exB: tu ? "Il fait sec cette semaine, je passe deux fois. Ne t'inquiète pas." : "Il fait sec cette semaine, je passe deux fois. Ne vous inquiétez pas.",
+      exC: tu ? "Tu peux venir la voir samedi, le jardin est ouvert jusqu'au soir." : "Vous pouvez venir la voir samedi, le jardin est ouvert jusqu'au soir."
+    };
+  }
+}
+</script>
+</body>
+</html>
