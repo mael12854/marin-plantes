@@ -1,7 +1,6 @@
 import { color, font, text } from '../tokens';
 
 interface CameraPanelProps {
-  plot?: string | null;
   imageUrl?: string | null;
   takenAt?: string | null;
 }
@@ -19,7 +18,7 @@ function relativeTime(iso: string): string {
   return `il y a ${days} j`;
 }
 
-export function CameraPanel({ plot, imageUrl, takenAt }: CameraPanelProps) {
+export function CameraPanel({ imageUrl, takenAt }: CameraPanelProps) {
   const online = !!takenAt && Date.now() - new Date(takenAt).getTime() < ONLINE_WINDOW_HOURS * 3600 * 1000;
   // Cache-bust: a live broadcast reuses the same file path, so the URL alone
   // won't change between frames — force a refetch keyed on the timestamp.
@@ -39,7 +38,7 @@ export function CameraPanel({ plot, imageUrl, takenAt }: CameraPanelProps) {
           letterSpacing: '.12em',
         }}
       >
-        <span style={{ color: '#93F5A2' }}>TABLETTE{plot ? ` — ${plot.toUpperCase()}` : ''}</span>
+        <span style={{ color: '#93F5A2' }}>TABLETTE — LE JARDIN</span>
         <span style={{ display: 'flex', alignItems: 'center', gap: 8, color: 'rgba(242,238,227,.6)' }}>
           {online && (
             <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#93F5A2', animation: 'blip 2.4s ease-in-out infinite' }} />
