@@ -21,6 +21,9 @@ function relativeTime(iso: string): string {
 
 export function CameraPanel({ plot, imageUrl, takenAt }: CameraPanelProps) {
   const online = !!takenAt && Date.now() - new Date(takenAt).getTime() < ONLINE_WINDOW_HOURS * 3600 * 1000;
+  // Cache-bust: a live broadcast reuses the same file path, so the URL alone
+  // won't change between frames — force a refetch keyed on the timestamp.
+  const displayUrl = imageUrl && takenAt ? `${imageUrl}?t=${encodeURIComponent(takenAt)}` : imageUrl;
 
   return (
     <div style={{ border: `1px solid ${text.onNuit.border}`, background: color.nuitDeTablette }}>
@@ -45,8 +48,8 @@ export function CameraPanel({ plot, imageUrl, takenAt }: CameraPanelProps) {
         </span>
       </div>
       <div style={{ position: 'relative', height: 300, background: '#0A130E', overflow: 'hidden' }}>
-        {imageUrl ? (
-          <img src={imageUrl} alt="Dernière photo du carré" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        {displayUrl ? (
+          <img src={displayUrl} alt="Dernière photo du carré" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
         ) : (
           <div
             style={{

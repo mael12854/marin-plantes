@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type ChangeEvent, type FormEvent } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { CameraPanel } from '../../components/CameraPanel';
+import { LiveBroadcast } from '../../components/LiveBroadcast';
 import { Button } from '../../components/ui/Button';
 import { SelectField, TextField } from '../../components/ui/Field';
 import { supabase } from '../../lib/supabase';
@@ -34,6 +35,8 @@ export function AdminPlant() {
 
   useEffect(() => {
     load();
+    const interval = setInterval(load, 15000);
+    return () => clearInterval(interval);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
@@ -120,23 +123,26 @@ export function AdminPlant() {
       </div>
       <h1 style={{ fontFamily: font.display, fontWeight: 300, fontSize: 40, lineHeight: 1.05, margin: '0 0 32px' }}>{plant.species}</h1>
 
-      <div style={{ marginBottom: 40 }}>
-        <CameraPanel plot={plant.plot} imageUrl={plant.camera_frame_url} takenAt={plant.camera_frame_taken_at} />
-        <div style={{ marginTop: 12 }}>
-          <input
-            ref={fileInputRef}
-            type="file"
-            accept="image/*"
-            capture="environment"
-            id="camera_photo"
-            onChange={handlePhotoChange}
-            style={{ display: 'none' }}
-          />
-          <Button variant="outline" disabled={uploadingPhoto} onClick={() => fileInputRef.current?.click()} style={{ opacity: uploadingPhoto ? 0.6 : 1 }}>
-            {uploadingPhoto ? 'Envoi…' : 'Prendre / envoyer une photo'}
-          </Button>
-          {photoError && <p style={{ color: color.argile, fontSize: 13, marginTop: 8 }}>{photoError}</p>}
+      <div className="mp-grid-stack" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginBottom: 40, alignItems: 'start' }}>
+        <div>
+          <CameraPanel plot={plant.plot} imageUrl={plant.camera_frame_url} takenAt={plant.camera_frame_taken_at} />
+          <div style={{ marginTop: 12 }}>
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept="image/*"
+              capture="environment"
+              id="camera_photo"
+              onChange={handlePhotoChange}
+              style={{ display: 'none' }}
+            />
+            <Button variant="outline" disabled={uploadingPhoto} onClick={() => fileInputRef.current?.click()} style={{ opacity: uploadingPhoto ? 0.6 : 1 }}>
+              {uploadingPhoto ? 'Envoi…' : 'Prendre / envoyer une photo'}
+            </Button>
+            {photoError && <p style={{ color: color.argile, fontSize: 13, marginTop: 8 }}>{photoError}</p>}
+          </div>
         </div>
+        {id && <LiveBroadcast plantId={id} onFrameUploaded={load} />}
       </div>
 
       <form
