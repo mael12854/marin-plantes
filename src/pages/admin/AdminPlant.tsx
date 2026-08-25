@@ -1,5 +1,5 @@
 import { useEffect, useState, type FormEvent } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Button } from '../../components/ui/Button';
 import { SelectField, TextField } from '../../components/ui/Field';
 import { supabase } from '../../lib/supabase';
@@ -10,10 +10,12 @@ const actionTypes = ['Arrosage', 'Taille', 'Mesure', 'Terre retournée', 'Autre'
 
 export function AdminPlant() {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
   const [plant, setPlant] = useState<Plant | null>(null);
   const [entries, setEntries] = useState<JournalEntry[]>([]);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
+  const [deleting, setDeleting] = useState(false);
 
   async function load() {
     if (!id) return;
@@ -50,6 +52,22 @@ export function AdminPlant() {
     load();
   }
 
+  async function handleDelete() {
+    if (!id) return;
+    const ok = window.confirm(
+      `Supprimer ${plant?.species ?? 'cette plante'} (${plant?.code}) ? Le journal et les demandes de visite associés seront supprimés aussi. Impossible à annuler.`
+    );
+    if (!ok) return;
+    setDeleting(true);
+    const { error } = await supabase.from('plants').delete().eq('id', id);
+    setDeleting(false);
+    if (error) {
+      window.alert("La suppression n'a pas marché, réessaie.");
+      return;
+    }
+    navigate('/admin');
+  }
+
   if (loading) {
     return <div style={{ padding: 96, textAlign: 'center', fontFamily: font.mono, fontSize: 12, color: 'rgba(36,28,22,.5)' }}>Chargement…</div>;
   }
@@ -64,7 +82,12 @@ export function AdminPlant() {
 
   return (
     <div className="mp-section" style={{ padding: '72px', maxWidth: 900, margin: '0 auto' }}>
-      <div style={{ fontFamily: font.mono, fontSize: 12, color: color.argile, letterSpacing: '.1em', marginBottom: 10 }}>{plant.code}</div>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 16, marginBottom: 10 }}>
+        <div style={{ fontFamily: font.mono, fontSize: 12, color: color.argile, letterSpacing: '.1em' }}>{plant.code}</div>
+        <Button variant="outline" onClick={handleDelete} disabled={deleting} style={{ borderColor: color.argile, color: color.argile, opacity: deleting ? 0.6 : 1 }}>
+          {deleting ? 'Suppression…' : 'Supprimer la plante'}
+        </Button>
+      </div>
       <h1 style={{ fontFamily: font.display, fontWeight: 300, fontSize: 40, lineHeight: 1.05, margin: '0 0 32px' }}>{plant.species}</h1>
 
       <form
