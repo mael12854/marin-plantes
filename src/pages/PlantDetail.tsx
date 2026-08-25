@@ -63,7 +63,7 @@ export function PlantDetail() {
   }
 
   return (
-    <div style={{ padding: '72px', maxWidth: 900, margin: '0 auto' }}>
+    <div className="mp-section" style={{ padding: '72px', maxWidth: 900, margin: '0 auto' }}>
       <div style={{ fontFamily: font.mono, fontSize: 12, color: color.argile, letterSpacing: '.1em', marginBottom: 10 }}>
         {plant.code}
         {plant.plot ? ` · ${plant.plot.toUpperCase()}` : ''}

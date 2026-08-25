@@ -37,7 +37,7 @@ export function ClientDashboard() {
   }
 
   return (
-    <div style={{ padding: '72px', maxWidth: 1100, margin: '0 auto' }}>
+    <div className="mp-section" style={{ padding: '72px', maxWidth: 1100, margin: '0 auto' }}>
       <h1 style={{ fontFamily: font.display, fontWeight: 300, fontSize: 40, margin: '0 0 40px' }}>Mon jardin</h1>
 
       {plants.length === 0 && pendingRequests.length === 0 && (

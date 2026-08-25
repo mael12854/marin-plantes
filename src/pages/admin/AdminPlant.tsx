@@ -63,12 +63,13 @@ export function AdminPlant() {
   }
 
   return (
-    <div style={{ padding: '72px', maxWidth: 900, margin: '0 auto' }}>
+    <div className="mp-section" style={{ padding: '72px', maxWidth: 900, margin: '0 auto' }}>
       <div style={{ fontFamily: font.mono, fontSize: 12, color: color.argile, letterSpacing: '.1em', marginBottom: 10 }}>{plant.code}</div>
       <h1 style={{ fontFamily: font.display, fontWeight: 300, fontSize: 40, lineHeight: 1.05, margin: '0 0 32px' }}>{plant.species}</h1>
 
       <form
         onSubmit={handleAddEntry}
+        className="mp-grid-stack"
         style={{ border: '1px solid rgba(36,28,22,.14)', background: '#fff', padding: '24px 22px', marginBottom: 40, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0 20px' }}
       >
         <SelectField label="Action" id="action_type" name="action_type" defaultValue={actionTypes[0]}>

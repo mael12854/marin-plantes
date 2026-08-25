@@ -53,7 +53,7 @@ export function Auth() {
   }
 
   return (
-    <div style={{ padding: '96px 72px', maxWidth: 480, margin: '0 auto' }}>
+    <div className="mp-section" style={{ padding: '96px 72px', maxWidth: 480, margin: '0 auto' }}>
       <h1 style={{ fontFamily: font.display, fontWeight: 300, fontSize: 40, lineHeight: 1.05, margin: '0 0 8px' }}>
         {mode === 'login' ? 'Connexion' : 'Créer un compte'}
       </h1>

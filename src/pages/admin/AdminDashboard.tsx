@@ -51,7 +51,7 @@ export function AdminDashboard() {
   const pending = requests.filter((r) => r.status === 'pending');
 
   return (
-    <div style={{ padding: '72px', maxWidth: 1100, margin: '0 auto' }}>
+    <div className="mp-section" style={{ padding: '72px', maxWidth: 1100, margin: '0 auto' }}>
       <h1 style={{ fontFamily: font.display, fontWeight: 300, fontSize: 40, margin: '0 0 40px' }}>Espace Marin</h1>
 
       <div style={{ fontFamily: font.mono, fontSize: 11, letterSpacing: '.16em', textTransform: 'uppercase', color: color.argile, marginBottom: 20 }}>
