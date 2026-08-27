@@ -82,15 +82,18 @@ export function LiveBroadcast({ onFrameUploaded }: LiveBroadcastProps) {
         Pose ce téléphone dans le jardin, laisse cet onglet ouvert et l'écran allumé. Une photo est envoyée toutes
         les {CAPTURE_INTERVAL_MS / 1000}&nbsp;s tant que la diffusion est active.
       </p>
-      {live && (
-        <video
-          ref={videoRef}
-          muted
-          playsInline
-          style={{ width: '100%', maxWidth: 320, display: 'block', marginBottom: 12, background: color.nuitDeTablette }}
-        />
-      )}
-      {!live && <video ref={videoRef} style={{ display: 'none' }} muted playsInline />}
+      <video
+        ref={videoRef}
+        muted
+        playsInline
+        style={{
+          width: '100%',
+          maxWidth: 320,
+          display: live ? 'block' : 'none',
+          marginBottom: live ? 12 : 0,
+          background: color.nuitDeTablette,
+        }}
+      />
       <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
         {!live ? (
           <Button onClick={start}>Démarrer la diffusion</Button>
